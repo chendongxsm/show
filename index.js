@@ -7,6 +7,7 @@ import {TabView} from 'teaset';
 import {name as appName} from './app.json';
 import Index from './app/pages/index/index'
 import Task from './app/pages/task/task'
+import User from './app/pages/user/user'
 
 class App extends React.Component{
   render(){
@@ -33,7 +34,7 @@ class App extends React.Component{
           activeIcon={require('./app/images/icon-user-b.png')}
           // badge={1}
         >
-          <Index />
+          <User />
         </TabView.Sheet>
       </TabView>
     )

@@ -85,7 +85,7 @@ export default class App extends Component<Props> {
             <Text style={styles.menuText}>拼多多</Text>
           </View>
         </View>
-        <TaskList list={arr}/>
+        {/* <TaskList list={arr}/> */}
       </ScrollView>
     );
   }
