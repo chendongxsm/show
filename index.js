@@ -6,6 +6,7 @@ import {AppRegistry} from 'react-native';
 import {TabView} from 'teaset';
 import {name as appName} from './app.json';
 import Index from './app/pages/index/index'
+import Task from './app/pages/task/task'
 
 class App extends React.Component{
   render(){
@@ -24,7 +25,7 @@ class App extends React.Component{
           activeIcon={require('./app/images/icon-task-b.png')}
           badge={3}
         >
-          <Index />
+          <Task />
         </TabView.Sheet>
         <TabView.Sheet
           title='我的'
