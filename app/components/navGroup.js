@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {Text, View, Image, StyleSheet} from 'react-native';
+import {Text, View, Image, StyleSheet, TouchableNativeFeedback} from 'react-native';
 
 
 export default class TaskList extends Component {
@@ -7,16 +7,19 @@ export default class TaskList extends Component {
     return (
         
       <View style={styles.wrap}>
-        {this.props.groupArr.map(item=><View style={styles.navWrap} key={item.title}>
-          <View style={styles.navLeft}>
-            <Image style={styles.navIcon} source={item.icon}></Image>
-            <Text style={styles.navText}>{item.title}</Text>
+        {this.props.groupArr.map(item=><TouchableNativeFeedback 
+         key={item.title} onPress={()=>this.props.navigation.push(item.path)}>
+          <View style={styles.navWrap}>
+            <View style={styles.navLeft}>
+              <Image style={styles.navIcon} source={item.icon}></Image>
+              <Text style={styles.navText}>{item.title}</Text>
+            </View>
+            <View style={styles.navRight}>
+              <Text style={styles.navText}>{item.detail}</Text>
+              <Image style={styles.navArrow} source={require('../images/icon-arrow-right.png')}></Image>
+            </View>
           </View>
-          <View style={styles.navRight}>
-            <Text style={styles.navText}>{item.detail}</Text>
-            <Image style={styles.navArrow} source={require('../images/icon-arrow-right.png')}></Image>
-          </View>
-        </View>)}
+        </TouchableNativeFeedback>)}
       </View>
     );
   }
