@@ -3,9 +3,10 @@ import {Text, View, Image, StyleSheet, FlatList} from 'react-native';
 
 
 export default class TaskList extends Component {
+  _keyExtractor = (item, index) => item.id.toString()
   render() {
     return (
-      <FlatList data={this.props.list}
+      <FlatList data={this.props.list} keyExtractor={this._keyExtractor}
         renderItem={({item}) => <View style={styles.itemWrap}>
         <Image style={styles.itemImg} source={{uri: item.image}} />
         <View style={styles.itemInfo}>

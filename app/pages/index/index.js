@@ -5,8 +5,20 @@ import Util from '../../utils/util'
 import TaskList from '../../components/taskList'
 
 
-type Props = {};
-export default class App extends Component<Props> {
+export default class App extends Component {
+  constructor(props) {
+		super(props);
+	}
+    
+  static navigationOptions = {
+      tabBarLabel: '首页',
+      tabBarIcon: ({ focused, tintColor }) => (
+          <Image
+              source={focused ? require('../../images/icon-home-b.png') : require('../../images/icon-home.png')}
+              style={{ width: 25, height: 20, tintColor: tintColor }}
+          />
+      )
+  };
   render() {
     let arr = [{
       id: 1,

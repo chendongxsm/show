@@ -1,11 +1,26 @@
 import React, { Component } from 'react';
-import { Platform, StyleSheet, Text, View, Image, StatusBar, ScrollView } from 'react-native';
+import {StyleSheet, Text, View, Image, TouchableNativeFeedback } from 'react-native';
 import Util from '../../utils/util'
 import NavGroup from '../../components/navGroup'
+import Setting from './setting'
 
 
 
 export default class Task extends Component {
+  
+  constructor(props) {
+		super(props);
+	}
+    
+  static navigationOptions = {
+      tabBarLabel: '我的',
+      tabBarIcon: ({ focused, tintColor }) => (
+          <Image
+              source={focused ? require('../../images/icon-user-b.png') : require('../../images/icon-user.png')}
+              style={{ width: 24, height: 24, tintColor: tintColor }}
+          />
+      )
+  };
   render() {
     let orderArr = [{
       image: require('../../images/icon-1.png'),
@@ -59,7 +74,10 @@ export default class Task extends Component {
         <View style={styles.topWrap}>
           <Image style={styles.avatar} source={require('../../images/default-avatar.jpg')}></Image> 
           <Text style={styles.username}>陈东xsm</Text>
-          <Image style={styles.settingIcon} source={require('../../images/icon-setting.png')}></Image>
+          <TouchableNativeFeedback onPress={() => this.props.navigation.push('Setting')}>
+            <Image style={styles.settingIcon} source={require('../../images/icon-setting.png')}></Image>
+          </TouchableNativeFeedback>
+          
         </View>
         <View style={styles.dataWrap}>
           <View style={styles.dataItem}>
@@ -158,8 +176,8 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   orderTitleLeftImg: {
-    width: 10,
-    height: 10,
+    width: 12,
+    height: 12,
     marginRight: 6
   },
   orderTitleRight: {
@@ -168,11 +186,11 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   orderTitleRightImg: {
-    width: 10,
-    height: 10
+    width: 12,
+    height: 12
   },
   orderTitleText: {
-    fontSize: 10
+    fontSize: 12
   },
   orderList: {
     display: 'flex',

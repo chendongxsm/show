@@ -7,6 +7,19 @@ import {NavigationBar} from 'teaset'
 
 
 export default class Task extends Component {
+  constructor(props) {
+		super(props);
+	}
+    
+  static navigationOptions = {
+      tabBarLabel: '任务大厅',
+      tabBarIcon: ({ focused, tintColor }) => (
+          <Image
+              source={focused ? require('../../images/icon-task-b.png') : require('../../images/icon-task.png')}
+              style={{ width: 25, height: 20, tintColor: tintColor }}
+          />
+      )
+  };
   render() {
     let arr = [{
       id: 1,
