@@ -1,23 +1,31 @@
 import React, { Component } from 'react';
 import {StyleSheet, Text, View, Image, TouchableNativeFeedback } from 'react-native';
 import {NavigationBar, ActionSheet} from 'teaset'
+import ImagePicker from 'react-native-image-crop-picker';
 import NavGroup from '../../components/navGroup'
 
 export default class Task extends Component{
   constructor(props) {
     super(props);
     this.shoot = this.shoot.bind(this)
+    this.openActionSheet = this.openActionSheet.bind(this)
 	}
   openActionSheet(){
     let items = [
-      {title: '拍照', onPress: () => this.shoot},
+      {title: '拍照', onPress: () => this.shoot()},
       {title: '从相册选择图片', onPress: () => alert('Hello')},
     ];
     let cancelItem = {title: '取消'};
     ActionSheet.show(items, cancelItem);
   }
   shoot(){
-    alert('Hello1')
+    ImagePicker.openPicker({
+      width: 300,
+      height: 400,
+      cropping: true
+    }).then(image => {
+      console.log(image);
+    });
   }
   render() {
     let navArr = [{
