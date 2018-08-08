@@ -8,17 +8,28 @@ export default class Task extends Component{
   constructor(props) {
     super(props);
     this.shoot = this.shoot.bind(this)
+    this.choose = this.choose.bind(this)
     this.openActionSheet = this.openActionSheet.bind(this)
+
 	}
   openActionSheet(){
     let items = [
       {title: '拍照', onPress: () => this.shoot()},
-      {title: '从相册选择图片', onPress: () => alert('Hello')},
+      {title: '从相册选择图片', onPress: () => this.choose()},
     ];
     let cancelItem = {title: '取消'};
     ActionSheet.show(items, cancelItem);
   }
   shoot(){
+    ImagePicker.openCamera({
+      width: 300,
+      height: 400,
+      cropping: true
+    }).then(image => {
+      console.log(image);
+    });
+  }
+  choose(){
     ImagePicker.openPicker({
       width: 300,
       height: 400,
