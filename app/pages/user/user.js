@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import {StyleSheet, Text, View, Image, TouchableNativeFeedback } from 'react-native';
+import {Button} from 'teaset'
 import Util from '../../utils/util'
 import NavGroup from '../../components/navGroup'
-import Setting from './setting'
+
 
 
 
@@ -73,7 +74,8 @@ export default class Task extends Component {
       <View style={styles.container}>
         <View style={styles.topWrap}>
           <Image style={styles.avatar} source={require('../../images/default-avatar.jpg')}></Image> 
-          <Text style={styles.username}>陈东xsm</Text>
+          {/* <Text style={styles.username}>陈东xsm</Text> */}
+          <Button title={<Text style={styles.loginText}>登录</Text>} style={styles.loginButton} onPress={() => this.props.navigation.push('Login')} />
           <TouchableNativeFeedback onPress={() => this.props.navigation.push('Setting')}>
             <Image style={styles.settingIcon} source={require('../../images/icon-setting.png')}></Image>
           </TouchableNativeFeedback>
@@ -212,4 +214,17 @@ const styles = StyleSheet.create({
     marginTop: 4,
     fontSize: 12
   },
+  loginButton: {
+    marginTop: 15,
+    paddingTop: 1,
+    paddingBottom: 1,
+    backgroundColor: '#33a8de',
+    borderColor: '#fff',
+    borderWidth: 0.8,
+    borderRadius: 3
+  },
+  loginText: {
+    fontSize: 13,
+    color: '#fff',
+  }
 });

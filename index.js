@@ -10,6 +10,7 @@ import Index from './app/pages/index/index'
 import Task from './app/pages/task/task'
 import User from './app/pages/user/user'
 import Setting from './app/pages/user/setting'
+import Login from './app/pages/user/login'
 
 YellowBox.ignoreWarnings(['Warning: isMounted(...) is deprecated', 'Module RCTImageLoader']);
 
@@ -90,7 +91,7 @@ const App = createStackNavigator(
 	{
 		Home: { screen: MainScreenNavigator },
 		Setting: { screen: Setting},
-		
+		Login: { screen: Login},
 	},
 	{
 		headerMode: 'none',
