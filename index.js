@@ -4,53 +4,26 @@
 import React from 'react';
 import {AppRegistry, YellowBox} from 'react-native';
 import { createStackNavigator, createBottomTabNavigator } from "react-navigation";
-import {TabView, TeaNavigator} from 'teaset';
 import {name as appName} from './app.json';
 import Index from './app/pages/index/index'
 import Task from './app/pages/task/task'
 import User from './app/pages/user/user'
 import Setting from './app/pages/user/setting'
 import Login from './app/pages/user/login'
+import Register from './app/pages/user/register'
+import Utils from './app/utils/util'
 
 YellowBox.ignoreWarnings(['Warning: isMounted(...) is deprecated', 'Module RCTImageLoader']);
 
-// class App extends React.Component{
-//   render(){
-//     return(
-//       <TeaNavigator rootView={<TabView style={{flex: 1}} type='projector'>
-//       <TabView.Sheet
-//         title='首页'
-//         icon={require('./app/images/icon-home.png')}
-//         activeIcon={require('./app/images/icon-home-b.png')}
-//       >
-//         <Index />
-//       </TabView.Sheet>
-//       <TabView.Sheet
-//         title='任务大厅'
-//         icon={require('./app/images/icon-task.png')}
-//         activeIcon={require('./app/images/icon-task-b.png')}
-//         badge={3}
-//       >
-//         <Task />
-//       </TabView.Sheet>
-//       <TabView.Sheet
-//         title='我的'
-//         icon={require('./app/images/icon-user.png')}
-//         activeIcon={require('./app/images/icon-user-b.png')}
-//         // badge={1}
-//       >
-//         <User />
-//       </TabView.Sheet>
-//     </TabView>} />
-      
-//     )
-//   }
-// }
+global.Post = Utils.post
+global.Get = Utils.get
+global.Log = Utils.log
+global.Path = 'http://192.168.0.107/show-api/public/index.php/api/'
 
 const MainScreenNavigator = createBottomTabNavigator(
 	{
 		Index: {
-			screen: Index,
+			screen: Login,
 		},
 		Task: {
 			screen: Task,
@@ -92,12 +65,11 @@ const App = createStackNavigator(
 		Home: { screen: MainScreenNavigator },
 		Setting: { screen: Setting},
 		Login: { screen: Login},
+		Register: { screen: Register},
 	},
 	{
 		headerMode: 'none',
 	}
 );
-
-
 
 AppRegistry.registerComponent(appName, () => App);

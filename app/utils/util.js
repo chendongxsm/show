@@ -38,6 +38,7 @@ var Util = {
 
   //get请求
   get: function (url, callback) {
+    url = Path + url
     fetch(url)
     .then((response) => response.text())
     .then((responseText) => {

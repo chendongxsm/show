@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {StyleSheet, Text, View, Image, TouchableNativeFeedback } from 'react-native';
+import {StyleSheet, Text, View, Image, TouchableNativeFeedback, StatusBar } from 'react-native';
 import {Button} from 'teaset'
 import Util from '../../utils/util'
 import NavGroup from '../../components/navGroup'
@@ -72,6 +72,7 @@ export default class Task extends Component {
     }]
     return (
       <View style={styles.container}>
+        {/* <StatusBar backgroundColor='#33a8de' translucent={false}/> */}
         <View style={styles.topWrap}>
           <Image style={styles.avatar} source={require('../../images/default-avatar.jpg')}></Image> 
           {/* <Text style={styles.username}>陈东xsm</Text> */}
