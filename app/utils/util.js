@@ -7,6 +7,18 @@ var {
   PixelRatio
 } = React;
 
+const dp2px = dp=>PixelRatio.getPixelSizeForLayoutSize(dp);
+const px2dp = px=>PixelRatio.roundToNearestPixel(px);
+let designSize = {width:750,height:1336};
+let pxRatio = PixelRatio.get();
+let win_width = Dimensions.get("window").width;
+let win_height = Dimensions.get("window").height;
+let width = dp2px(win_width);
+let height = dp2px(win_height);
+let design_scale = designSize.width/width;
+height = height*design_scale
+let scale = 1/pxRatio/design_scale;
+
 var Util = {
 
   //单位像素
@@ -16,6 +28,9 @@ var Util = {
     width: Dimensions.get('window').width,
     height: Dimensions.get('window').height
   },
+  width: width,
+  height: height,
+  scale: scale,
 
   //post请求
   post: function (url, data, callback) {

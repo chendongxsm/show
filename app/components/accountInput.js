@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {Text, View, Image, StyleSheet, TextInput} from 'react-native';
+import {Text, View, Image, StyleSheet, TextInput, TouchableNativeFeedback} from 'react-native';
 
 
 export default class TaskList extends Component {
@@ -18,7 +18,9 @@ export default class TaskList extends Component {
             secureTextEntry={item.password}
             placeholderTextColor='#fff' 
             underlineColorAndroid="transparent"/>
-            <View style={styles.code}><Text style={styles.codeText}>{item.code}</Text></View>
+            <TouchableNativeFeedback style={styles.code}>
+              <Text style={styles.codeText}>{item.code}</Text>
+            </TouchableNativeFeedback>
           </View>)}
         </View>
     );
