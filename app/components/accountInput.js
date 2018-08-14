@@ -1,10 +1,18 @@
 import React, { Component } from 'react';
 import {Text, View, Image, StyleSheet, TextInput, TouchableNativeFeedback} from 'react-native';
+import {Toast} from 'teaset'
+var timer = null
 
 
 export default class TaskList extends Component {
+  constructor(props){
+    super(props)
+    this.getCode = this.getCode.bind(this)
+    this.state = {
+      time: '获取验证码'
+    }
+  }
   render() {
-    
     return (
         <View style={styles.groupWrap}>
           {this.props.items.map((item, index)=><View key={item.name} style={[styles.inputWrap , 
@@ -18,12 +26,35 @@ export default class TaskList extends Component {
             secureTextEntry={item.password}
             placeholderTextColor='#fff' 
             underlineColorAndroid="transparent"/>
-            <TouchableNativeFeedback style={styles.code}>
-              <Text style={styles.codeText}>{item.code}</Text>
-            </TouchableNativeFeedback>
+            {item.code && <TouchableNativeFeedback style={styles.code} onPress={()=>{this.getCode()}}>
+              <Text style={styles.codeText}>{this.state.time}</Text>
+            </TouchableNativeFeedback>}
+            
           </View>)}
         </View>
     );
+  }
+  getCode(){
+    let time = 60
+    this.setState({
+      time: time + 's'
+    })
+    timer = setInterval(()=>{
+      if(time == 0){
+        this.setState({
+          time: '获取验证码'
+        })
+        clearInterval(timer)
+      }else{
+        time--
+        this.setState({
+          time: time + 's'
+        })
+      }
+    }, 1000)
+    Get('user/getCode', res=>{
+      Toast.message(res.msg);
+    })
   }
 }
 

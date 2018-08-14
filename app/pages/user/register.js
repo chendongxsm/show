@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import {StyleSheet, Text, View, ImageBackground} from 'react-native';
 import {Button} from 'teaset'
 import AccountInput from '../../components/accountInput'
+import {width, height, scale} from '../../utils/util'
 
 
 export default class Task extends Component{
@@ -33,7 +34,7 @@ export default class Task extends Component{
         icon: require('../../images/icon-login-code.png'),
         name: 'code',
         placeholder: '请输入验证码',
-        code: '获取验证码'
+        code: true
       }]
     return (
       <View style={styles.container}>
@@ -51,9 +52,10 @@ export default class Task extends Component{
 
 const styles = StyleSheet.create({
   container: {
-    // width: Width,
-    // height: Height,
-    // transform: [{translateX: -Width * .5}, {translateY: -Height * .5}, {scale: Scale}, {translateX: Width * .5}, {translateY: Height * .5}]
+    width: width,
+    height: height,
+    transform: [{translateX: -width * .5}, {translateY: -height * .5}, {scale: scale}, 
+      {translateX: width * .5}, {translateY: height * .5}]
   },
   bgImg: {
     width: 750, 

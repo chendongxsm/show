@@ -18,9 +18,6 @@ YellowBox.ignoreWarnings(['Warning: isMounted(...) is deprecated', 'Module RCTIm
 global.Post = Utils.post
 global.Get = Utils.get
 global.Log = Utils.log
-global.Width = Utils.width
-global.Height = Utils.height
-global.Scale = Utils.scale
 global.Path = 'http://192.168.0.107/show-api/public/index.php/api/'
 
 const MainScreenNavigator = createBottomTabNavigator(

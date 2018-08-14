@@ -31,6 +31,12 @@ var Util = {
   width: width,
   height: height,
   scale: scale,
+  transform: [{translateX: -(width * .5)}, 
+    {translateY: -(height * .5)}, 
+    {scale: scale}, 
+    {translateX: width * .5}, 
+    {translateY: height * .5}
+  ],
 
   //post请求
   post: function (url, data, callback) {
